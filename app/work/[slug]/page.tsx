@@ -21,7 +21,7 @@ const projectsData: Record<string, {
         color: "#E05463",
         link: "#",
         github: "https://github.com/certaindragon3/aReader",
-        pages: 1, // 根据实际设计稿数量调整
+        pages: 4,
     },
     versecraft: {
         title: "Versecraft",
@@ -29,7 +29,7 @@ const projectsData: Record<string, {
         color: "#3465E0",
         link: "https://versecraft.vercel.app",
         github: "https://github.com/certaindragon3/prototype-3",
-        pages: 1,
+        pages: 5,
     },
     acheng: {
         title: "Acheng Virtual Museum",
@@ -37,7 +37,7 @@ const projectsData: Record<string, {
         color: "#FF800F",
         link: "https://acheng.jiesen-huang.com",
         github: "https://github.com/certaindragon3/info305-_final",
-        pages: 1,
+        pages: 5,
     },
     "canada-species": {
         title: "Canadian Species at Risk",
@@ -45,7 +45,7 @@ const projectsData: Record<string, {
         color: "#DD4B2F",
         link: "https://canada.jiesen-huang.com",
         github: "https://github.com/loeeeee/INFOSCI301-Final-Project",
-        pages: 1,
+        pages: 4,
     },
 };
 
@@ -61,7 +61,7 @@ export default function ProjectPage() {
 
     // 生成页面图片数组
     const pageImages = Array.from({ length: project.pages }, (_, i) => 
-        `/projects/${slug}/page-${i + 1}.png`
+        `/projects/${slug}/page-${i + 1}.webp`
     );
 
     return (
@@ -106,7 +106,7 @@ export default function ProjectPage() {
                             <span>Source</span>
                         </Link>
                     </div>
-                </nav>
+                </div>
             </nav>
 
             {/* 设计稿展示区域 */}
