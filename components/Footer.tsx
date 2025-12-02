@@ -82,8 +82,8 @@ export default function Footer() {
 
     const socialLinks = [
         { name: 'GitHub', href: 'https://github.com/certaindragon3' },
-        { name: 'LinkedIn', href: '#' },
-        { name: 'Email', href: 'mailto:jiesen@example.com' },
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jiesen-18a854325' },
+        { name: 'Email', href: 'mailto:certaindragon3@gmail.com' },
     ];
 
     return (
@@ -156,7 +156,7 @@ export default function Footer() {
                     className="mb-24 md:mb-32"
                 >
                     <Link 
-                        href="mailto:jiesen@example.com"
+                        href="mailto:certaindragon3@gmail.com"
                         className="group inline-flex items-center gap-4 md:gap-6"
                     >
                         <span className="text-3xl md:text-5xl lg:text-6xl font-light text-[#7a6565] group-hover:text-[#d4a5a5] transition-colors duration-700">
