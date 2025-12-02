@@ -15,7 +15,7 @@ export default function Header() {
                 Jiesen Huang
             </Link>
             <nav className="flex gap-8 text-sm font-light tracking-wider">
-                <Link href="#projects" className="relative group">
+                <Link href="#work" className="relative group">
                     <span className="hover:opacity-70 transition-opacity">Projects</span>
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300" />
                 </Link>

@@ -11,6 +11,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Jiesen Huang | Portfolio",
   description: "I am a builder of refuges.",
+  icons: {
+    icon: "/favicon-2.png",
+  },
 };
 
 export default function RootLayout({
