@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { GradientHeading } from '@/components/ui/gradient-heading';
 import { Brain, ScrollText, UtensilsCrossed, Leaf, LucideIcon, ArrowUpRight, Github } from 'lucide-react';
 
@@ -86,15 +87,34 @@ export default function Work() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
-                    className="mb-24 text-center"
+                    className="mb-24 relative"
                 >
-                    <span className="text-sm tracking-[0.3em] uppercase text-gray-500 mb-6 block">Selected Work</span>
-                    <GradientHeading size="xl" variant="default" weight="thin">
-                        Digital Refuges I&apos;ve Built
-                    </GradientHeading>
-                    <p className="text-gray-600 mt-8 max-w-2xl mx-auto text-lg leading-relaxed">
-                        The Warm Tech
-                    </p>
+                    {/* Avatar Image - positioned to the left of title */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="hidden md:block absolute left-0 lg:left-20 top-1/2 -translate-y-1/2"
+                    >
+                        <Image
+                            src="/avatar/1.png"
+                            alt="Avatar"
+                            width={150}
+                            height={150}
+                            className="rounded-2xl object-cover brightness-115 contrast-105"
+                        />
+                    </motion.div>
+
+                    {/* Text Content - stays centered */}
+                    <div className="text-center">
+                        <span className="text-sm tracking-[0.3em] uppercase text-amber-600/80 mb-6 block">Selected Work</span>
+                        <GradientHeading size="xl" variant="default" weight="thin">
+                            Digital Refuges I&apos;ve Built
+                        </GradientHeading>
+                        <p className="text-gray-600 mt-8 max-w-2xl mx-auto text-lg leading-relaxed italic">
+                            The Warm Tech.
+                        </p>
+                    </div>
                 </motion.div>
 
                 {/* Projects Grid - Equal sizing */}
