@@ -75,7 +75,7 @@ export default function Work() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section id="projects" ref={ref} className="relative px-8 py-40 bg-[#0a0a0a] text-white overflow-hidden">
+        <section id="work" ref={ref} className="relative px-8 py-40 bg-[#0a0a0a] text-white overflow-hidden">
             {/* Subtle background */}
             <div className="absolute inset-0 opacity-[0.015]">
                 <div className="w-full h-full" style={{
