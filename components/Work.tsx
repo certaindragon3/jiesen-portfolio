@@ -4,8 +4,67 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import { GradientHeading } from '@/components/ui/gradient-heading';
-import { ArrowUpRight, Github } from 'lucide-react';
-import { projects, iconMap } from '@/lib/projects';
+import { Brain, ScrollText, UtensilsCrossed, Leaf, LucideIcon, ArrowUpRight, Github } from 'lucide-react';
+
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+    brain: Brain,
+    scroll: ScrollText,
+    utensils: UtensilsCrossed,
+    leaf: Leaf,
+};
+
+// Project data from Notion
+const projects = [
+    {
+        title: "aReader",
+        slug: "areader",
+        subtitle: "An Evidence-Based Interface for ADHD Minds",
+        description: "The modern web is hostile to the ADHD mind. I built a Chrome extension that strips pages to a calm, single-column reading field—then adds an AI study partner that summarizes, explains, and never judges.",
+        tags: ["Chrome Extension", "Cognitive Accessibility", "AI", "Open Source"],
+        link: "#",
+        github: "https://github.com/certaindragon3/aReader-public",
+        color: "#E05463",
+        iconKey: "brain",
+        year: "2025",
+    },
+    {
+        title: "Versecraft",
+        slug: "versecraft",
+        subtitle: "When Code Meets the Flesh",
+        description: "Machine translation flattens voice. Human translation doesn't scale. I built a copilot, not autopilot for translating 18th-century Chinese feminist verse—RAG-powered, transparent, and designed to preserve the author's soul across languages.",
+        tags: ["AI/ML", "NLP", "Cultural Heritage", "Translation"],
+        link: "https://versecraft.vercel.app",
+        github: "https://github.com/certaindragon3/prototype-3",
+        color: "#3465E0",
+        iconKey: "scroll",
+        year: "2025",
+    },
+    {
+        title: "Acheng Virtual Museum",
+        slug: "acheng",
+        subtitle: "Extracting the Source Code of a Kitchen",
+        description: "How do you archive a gut feeling? Before a 26-year-old Suzhou kitchen goes silent, I captured its sensory algorithms—LiDAR scans, 61MP photos, deep interviews—and reassembled them into a pedagogical micro-museum.",
+        tags: ["3D Scanning", "Cultural Heritage", "Virtual Museum", "HCI"],
+        link: "https://acheng.jiesen-huang.com",
+        github: "https://github.com/certaindragon3/info305-_final",
+        color: "#FF800F",
+        iconKey: "utensils",
+        year: "2025",
+    },
+    {
+        title: "Canadian Species at Risk",
+        slug: "canada-species",
+        subtitle: "Making the 42% Silence Visible",
+        description: "At eight, Banff's glacier looked eternal. The data says otherwise. I visualized Canada's Policy Lag — the gap between a species vanishing and the law noticing—turning invisible decline into an explorable, permanent witness.",
+        tags: ["Data Visualization", "Conservation", "UN SDG 14 & 15"],
+        link: "https://canada.jiesen-huang.com",
+        github: "https://github.com/loeeeee/INFOSCI301-Final-Project",
+        color: "#DD4B2F",
+        iconKey: "leaf",
+        year: "2025",
+    },
+];
 
 export default function Work() {
     const ref = useRef(null);
