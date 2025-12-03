@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, notFound } from 'next/navigation';
+import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -51,6 +51,7 @@ const projectsData: Record<string, {
 
 export default function ProjectPage() {
     const params = useParams();
+    const router = useRouter();
     const slug = params.slug as string;
     
     const project = projectsData[slug];
@@ -58,6 +59,19 @@ export default function ProjectPage() {
     if (!project) {
         notFound();
     }
+
+    // 导航回主页并滚动到 work 部分
+    const handleBackToWork = (e: React.MouseEvent) => {
+        e.preventDefault();
+        router.push('/');
+        // 等待页面加载后滚动到 work 部分
+        setTimeout(() => {
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    };
 
     // 生成页面图片数组
     const pageImages = Array.from({ length: project.pages }, (_, i) => 
@@ -69,13 +83,13 @@ export default function ProjectPage() {
             {/* 顶部导航栏 */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
                 <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center justify-between">
-                    <Link 
-                        href="/#work" 
+                    <button 
+                        onClick={handleBackToWork}
                         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm font-medium">Back to Work</span>
-                    </Link>
+                    </button>
                     
                     <div className="flex items-center gap-4">
                         <h1 
