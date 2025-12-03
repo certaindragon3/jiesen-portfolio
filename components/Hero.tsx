@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Spotlight } from '@/components/ui/spotlight';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { TextAnimate } from '@/components/ui/text-animate';
+import { FlipWords } from '@/components/ui/flip-words';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -16,13 +17,13 @@ export default function Hero() {
     return (
         <section className="relative h-screen bg-[#0a0a0a] text-white overflow-hidden">
             {/* Spotlight effect */}
-            <Spotlight 
-                className="-top-40 left-0 md:left-60 md:-top-20" 
-                fill="rgba(93, 43, 125, 0.2)" 
+            <Spotlight
+                className="-top-40 left-0 md:left-60 md:-top-20"
+                fill="rgba(93, 43, 125, 0.2)"
             />
-            <Spotlight 
-                className="top-28 left-80 h-[80vh] w-[50vw]" 
-                fill="rgba(217, 72, 166, 0.15)" 
+            <Spotlight
+                className="top-28 left-80 h-[80vh] w-[50vw]"
+                fill="rgba(217, 72, 166, 0.15)"
             />
 
             {/* Animated background gradient */}
@@ -48,37 +49,23 @@ export default function Hero() {
                         className="mb-10 md:mb-14"
                     >
                         <div className="relative">
-                            {/* Decorative accent line */}
-                            <motion.div 
-                                initial={{ width: 0 }}
-                                animate={{ width: '3rem' }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                                className="h-[2px] bg-gradient-to-r from-[#D948A6] to-transparent mb-6"
-                            />
-                            
                             {/* Main title */}
-                            <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-light tracking-tight text-white">
+                            <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-light tracking-tight text-white mb-4">
                                 I am a builder of{' '}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5D2B7D] via-[#D948A6] to-white">
-                                    refuges.
+                                    Refuges.
                                 </span>
                             </h1>
                         </div>
                     </motion.div>
 
-                    {/* Manifesto - Poetic statements */}
-                    <div className="space-y-4 mb-10 md:mb-12 pl-4 border-l border-[#D948A6]/30">
-                        {manifesto.map((item, index) => (
-                            <motion.p
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1 + index * 0.15, duration: 0.6 }}
-                                className="text-sm sm:text-base text-white/50 leading-relaxed font-light italic"
-                            >
-                                {item}
-                            </motion.p>
-                        ))}
+                    {/* Dynamic Manifesto with FlipWords */}
+                    <div className="h-16 sm:h-20 mb-4">
+                        <FlipWords
+                            words={manifesto}
+                            duration={5000}
+                            className="text-base sm:text-lg text-white/80 font-light leading-relaxed !p-0"
+                        />
                     </div>
 
                     {/* Core Philosophy */}
@@ -86,25 +73,21 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.6, duration: 1 }}
-                        className="mb-10"
+                        className="mb-10 flex flex-col gap-2"
                     >
                         <TextGenerateEffect
-                            words="I use computation to hold what the world forgets. To make the invisible visible, the fragile durable, the hostile humane."
-                            className="max-w-xl text-sm sm:text-base"
-                            textClassName="text-white/80 font-light"
+                            words="I use computation to hold what the world forgets."
+                            className="max-w-xl text-[10px] sm:text-xs"
+                            textClassName="text-white/60 font-light"
+                            duration={0.6}
+                        />
+                        <TextGenerateEffect
+                            words="To make the invisible visible, the fragile durable, the hostile humane."
+                            className="max-w-xl text-[10px] sm:text-xs"
+                            textClassName="text-white/60 font-light"
                             duration={0.6}
                         />
                     </motion.div>
-
-                    {/* Portfolio statement */}
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2.2, duration: 0.8 }}
-                        className="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-white/40 mb-6"
-                    >
-                        This portfolio is my proof. These interfaces are my practice.
-                    </motion.p>
 
                     {/* Welcome CTA - Bold capsule */}
                     <motion.div
@@ -112,7 +95,7 @@ export default function Hero() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 2.5, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
                     >
-                        <button 
+                        <button
                             onClick={() => {
                                 const workSection = document.getElementById('work');
                                 if (workSection) {
@@ -124,17 +107,17 @@ export default function Hero() {
                             {/* Animated gradient border */}
                             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5D2B7D] via-[#D948A6] to-white opacity-60" />
                             <span className="absolute inset-[1px] rounded-full bg-[#0a0a0a]" />
-                            
+
                             {/* Glow effect */}
                             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5D2B7D]/20 via-[#D948A6]/20 to-white/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            
+
                             {/* Text */}
-                            <span className="relative text-base sm:text-lg md:text-xl font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[#D948A6] to-[#5D2B7D]">
+                            <span className="relative text-xs sm:text-sm md:text-base font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[#D948A6] to-[#5D2B7D]">
                                 Welcome to my realm
                             </span>
-                            
+
                             {/* Arrow icon */}
-                            <motion.span 
+                            <motion.span
                                 className="relative text-[#D948A6]"
                                 animate={{ x: [0, 4, 0] }}
                                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -197,7 +180,7 @@ export default function Hero() {
                             priority
                         />
                         <div className="absolute -inset-4 bg-gradient-to-r from-[#5D2B7D]/40 via-[#D948A6]/30 to-white/20 rounded-2xl blur-xl -z-10" />
-                        
+
                         {/* Mobile artwork info */}
                         <div className="mt-4 text-center">
                             <p className="text-white/90 text-xs font-medium tracking-wide">&ldquo;Nebula&rdquo;</p>
