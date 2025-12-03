@@ -76,13 +76,13 @@ export default function Hero() {
                         className="mb-10 flex flex-col gap-2"
                     >
                         <TextGenerateEffect
-                            words="I use computation to hold what the world forgets."
+                            words="I design for preservation, accessibility, and understanding."
                             className="max-w-xl text-[10px] sm:text-xs"
                             textClassName="text-white/60 font-light"
                             duration={0.6}
                         />
                         <TextGenerateEffect
-                            words="To make the invisible visible, the fragile durable, the hostile humane."
+                            words="—where computation meets care."
                             className="max-w-xl text-[10px] sm:text-xs"
                             textClassName="text-white/60 font-light"
                             duration={0.6}

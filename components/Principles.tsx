@@ -158,12 +158,14 @@ function PrincipleCard({
                     }`}
                 onClick={() => setIsExpanded(!isExpanded)}
             >
-                {/* Glow overlay */}
+                {/* Glow overlay - simplified for Safari performance */}
                 <div 
-                    className={`absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none
+                    className={`absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300
                         ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                     style={{ 
-                        boxShadow: 'inset 0 0 0 1px rgba(245,158,11,0.5), 0 0 40px -10px rgba(245,158,11,0.4)' 
+                        boxShadow: '0 0 30px -8px rgba(245,158,11,0.35)',
+                        // Use transform: translateZ(0) to force GPU acceleration on Safari
+                        transform: 'translateZ(0)'
                     }} 
                 />
                 
@@ -194,18 +196,17 @@ function PrincipleCard({
                     {/* First paragraph - always visible */}
                     <p className="text-gray-600 leading-relaxed text-base">{principle.description[0]}</p>
 
-                    {/* Expandable content */}
+                    {/* Expandable content - use max-height for Safari compatibility */}
                     <div 
-                        className={`grid transition-all duration-300 ease-out ${
-                            isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${
+                            isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                         }`}
+                        style={{ willChange: isExpanded ? 'max-height, opacity' : 'auto' }}
                     >
-                        <div className="overflow-hidden">
-                            <div className="pt-4 space-y-3">
-                                {principle.description.slice(1).map((paragraph, i) => (
-                                    <p key={i} className="text-gray-600 leading-relaxed text-base">{paragraph}</p>
-                                ))}
-                            </div>
+                        <div className="pt-4 space-y-3">
+                            {principle.description.slice(1).map((paragraph, i) => (
+                                <p key={i} className="text-gray-600 leading-relaxed text-base">{paragraph}</p>
+                            ))}
                         </div>
                     </div>
 
