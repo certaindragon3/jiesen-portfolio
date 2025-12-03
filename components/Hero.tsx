@@ -40,7 +40,7 @@ export default function Hero() {
             {/* Main content container */}
             <div className="relative z-10 h-full flex flex-col lg:flex-row">
                 {/* Left side - Text content */}
-                <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 md:px-16 lg:px-20 py-16 lg:py-0 lg:max-w-[40%]">
+                <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 md:px-16 lg:px-20 py-16 lg:py-0 lg:max-w-[38.2%]">
                     {/* Hero Title */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
