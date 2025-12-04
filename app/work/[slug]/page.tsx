@@ -20,7 +20,7 @@ const projectsData: Record<string, {
         subtitle: "An Evidence-Based Interface for ADHD Minds",
         color: "#E05463",
         link: "#",
-        github: "https://github.com/certaindragon3/aReader",
+        github: "https://github.com/certaindragon3/aReader-public",
         pages: 4,
     },
     versecraft: {
