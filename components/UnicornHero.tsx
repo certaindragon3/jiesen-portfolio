@@ -6,7 +6,7 @@ declare global {
     interface Window {
         UnicornStudio: {
             isInitialized: boolean;
-            init: () => void;
+            init: () => Promise<unknown>;
             destroy: () => void;
         };
     }
@@ -16,39 +16,34 @@ export default function UnicornHero() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        let scriptLoaded = false;
-
         const initUnicorn = () => {
-            if (window.UnicornStudio && window.UnicornStudio.init) {
-                window.UnicornStudio.init();
+            if (window.UnicornStudio?.init) {
+                window.UnicornStudio.init().catch((err) => {
+                    console.error('UnicornStudio init failed', err);
+                });
             }
         };
 
-        // 检查脚本是否已加载
-        const existingScript = document.querySelector('script[src*="unicornStudio"]');
-        
+        const existingScript = document.querySelector<HTMLScriptElement>('script[data-us-loader="true"]');
+
         if (!existingScript) {
-            // 首次加载脚本
             const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.36/dist/unicornStudio.umd.js';
+            script.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.2/dist/unicornStudio.umd.js';
+            script.async = true;
+            script.dataset.usLoader = 'true';
             script.onload = () => {
-                scriptLoaded = true;
                 initUnicorn();
             };
             (document.head || document.body).appendChild(script);
         } else {
-            // 脚本已存在，直接初始化
-            // 使用 setTimeout 确保 DOM 已经准备好
-            setTimeout(initUnicorn, 0);
+            initUnicorn();
         }
 
-        // 清理函数：组件卸载时销毁实例
         return () => {
-            if (window.UnicornStudio && window.UnicornStudio.destroy) {
+            if (window.UnicornStudio?.destroy) {
                 try {
                     window.UnicornStudio.destroy();
                 } catch (e) {
-                    // 忽略销毁时的错误
                 }
             }
         };
@@ -58,7 +53,12 @@ export default function UnicornHero() {
         <section className="relative w-full h-screen bg-[#0a0a0a] overflow-hidden">
             <div 
                 ref={containerRef}
-                data-us-project="775t0fdpipna57XQ9oJY" 
+                data-us-project-src="/unicornhero.json"
+                data-us-scale="1"
+                data-us-dpi="1.5"
+                data-us-lazyload="true"
+                data-us-alttext="Noise masked hero unicorn scene"
+                data-us-arialabel="Interactive Unicorn Studio canvas scene"
                 className="absolute inset-0 w-full h-full"
             />
         </section>
