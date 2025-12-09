@@ -76,6 +76,40 @@ const PoeticLine = ({ text, delay, isHighlight = false }: { text: string; delay:
     </motion.div>
 );
 
+// Crystal prismatic text effect
+const CrystalName = ({ text }: { text: string }) => {
+    return (
+        <motion.div 
+            className="relative cursor-pointer group inline-block"
+            initial="initial"
+            whileHover="hovered"
+        >
+            <motion.span
+                className="relative z-10 text-2xl md:text-3xl font-light tracking-[0.15em] transition-all duration-500"
+                style={{
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent" // Needed for background-clip to work
+                }}
+                variants={{
+                    initial: {
+                        backgroundImage: "linear-gradient(90deg, #8a7575 0%, #7a6565 100%)", // Solid slate/brown
+                        textShadow: "0 0 0px rgba(212, 165, 165, 0)"
+                    },
+                    hovered: { 
+                        // Darker, richer gradient on hover for better contrast + subtle glow
+                        backgroundImage: "linear-gradient(90deg, #a86c6c 0%, #6b5b5b 50%, #a86c6c 100%)", 
+                        textShadow: "0 0 12px rgba(212, 165, 165, 0.4)" // Soft rose glow
+                    }
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+                {text}
+            </motion.span>
+        </motion.div>
+    );
+};
+
 export default function Footer() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -94,7 +128,7 @@ export default function Footer() {
             style={{
                 background: `linear-gradient(180deg, 
                     ${quartzColors.crystal} 0%, 
-                    ${quartzColors.pearl} 30%,
+                    ${quartzColors.pearl} 30%, 
                     ${quartzColors.ice} 70%,
                     #fafafa 100%
                 )`
@@ -227,13 +261,7 @@ export default function Footer() {
                     style={{ borderTop: '1px solid rgba(212, 165, 165, 0.2)' }}
                 >
                     <div className="space-y-2">
-                        <motion.p 
-                            className="text-2xl md:text-3xl font-light tracking-[0.15em] text-[#8a7575]"
-                            whileHover={{ letterSpacing: '0.2em' }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            Jiesen Huang
-                        </motion.p>
+                        <CrystalName text="Jiesen Huang" />
                         <p className="text-sm text-[#a39090] font-light tracking-wider">
                             Solution Always Prevails.
                         </p>
