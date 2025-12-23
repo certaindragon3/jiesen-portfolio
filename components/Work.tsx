@@ -23,7 +23,7 @@ const projects = [
         subtitle: "Debugging the Distracted Mind",
         description: "The modern web is hostile to the ADHD mind. I built a Chrome extension that strips pages to a calm, single-column reading field—then adds an AI study partner that summarizes, explains, and never judges.",
         tags: ["Chrome Extension", "Cognitive Accessibility", "AI"],
-        link: "#",
+        link: "https://areader.jiesen-huang.com",
         github: "https://github.com/certaindragon3/aReader-public",
         color: "#E05463",
         iconKey: "brain",
