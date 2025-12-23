@@ -19,7 +19,7 @@ const projectsData: Record<string, {
         title: "aReader",
         subtitle: "An Evidence-Based Interface for ADHD Minds",
         color: "#E05463",
-        link: "#",
+        link: "https://areader.jiesen-huang.com",
         github: "https://github.com/certaindragon3/aReader-public",
         pages: 4,
     },
