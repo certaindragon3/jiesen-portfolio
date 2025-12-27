@@ -34,7 +34,7 @@ const projects = [
         title: "Versecraft",
         slug: "versecraft",
         subtitle: "When Code Meets the Flesh",
-        description: "Machine translation flattens voice. Human translation doesn't scale. I built \"a copilot, not autopilot\"  for translating 18th-century Chinese feminist verse—RAG-powered, transparent, and designed to preserve the author's soul across languages.",
+        description: "Machine translation flattens voice. Human translation doesn't scale. I built \"AI Copilot\"  for translating 18th-century Chinese feminist verse—RAG-powered, transparent, and designed to preserve the author's soul across languages.",
         tags: ["AI/ML", "NLP", "Cultural Heritage", "Translation"],
         link: "https://versecraft.vercel.app",
         github: "https://github.com/certaindragon3/prototype-3",
