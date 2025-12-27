@@ -83,16 +83,20 @@ export default function ProjectPage() {
         <main className="min-h-screen bg-[#f5f5f5]">
             {/* 顶部导航栏 */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-                <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center justify-between">
-                    <button 
-                        onClick={handleBackToWork}
-                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-                    >
-                        <ArrowLeft className="w-5 h-5" />
-                        <span className="text-sm font-medium">Back to Work</span>
-                    </button>
+                <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center">
+                    {/* 左侧区域 - 占据等量空间 */}
+                    <div className="flex-1 flex justify-start">
+                        <button 
+                            onClick={handleBackToWork}
+                            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                            <ArrowLeft className="w-5 h-5" />
+                            <span className="text-sm font-medium">Back to Work</span>
+                        </button>
+                    </div>
                     
-                    <div className="flex items-center gap-4">
+                    {/* 中间标题 - 保持原始大小 */}
+                    <div className="flex-shrink-0">
                         <h1 
                             className="text-lg font-medium"
                             style={{ color: project.color }}
@@ -101,7 +105,8 @@ export default function ProjectPage() {
                         </h1>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    {/* 右侧区域 - 占据等量空间 */}
+                    <div className="flex-1 flex items-center justify-end gap-4">
                         {project.link !== "#" && (
                             <Link
                                 href={project.link}
@@ -109,7 +114,7 @@ export default function ProjectPage() {
                                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                             >
                                 <ExternalLink className="w-4 h-4" />
-                                <span>Live Demo</span>
+                                <span className="hidden sm:inline">Live Demo</span>
                             </Link>
                         )}
                         <Link
@@ -118,7 +123,7 @@ export default function ProjectPage() {
                             className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                         >
                             <Github className="w-4 h-4" />
-                            <span>Source</span>
+                            <span className="hidden sm:inline">Source</span>
                         </Link>
                     </div>
                 </div>
