@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import { getImgUrl } from '@/lib/utils';
 import { GradientHeading } from '@/components/ui/gradient-heading';
 import { Heart, Minus, Eye, Accessibility, ChevronDown } from 'lucide-react';
 
@@ -89,7 +90,7 @@ export default function Principles() {
                         className="hidden md:block absolute right-0 lg:right-20 top-1/2 -translate-y-1/2"
                     >
                         <Image
-                            src="/avatar/2.png"
+                            src={getImgUrl("/avatar/2.webp")}
                             alt="Avatar"
                             width={150}
                             height={150}

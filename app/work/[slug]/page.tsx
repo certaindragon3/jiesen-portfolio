@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { getImgUrl } from '@/lib/utils';
 
 // 项目数据配置
 const projectsData: Record<string, {
@@ -75,7 +76,7 @@ export default function ProjectPage() {
 
     // 生成页面图片数组
     const pageImages = Array.from({ length: project.pages }, (_, i) => 
-        `/projects/${slug}/page-${i + 1}.webp`
+        getImgUrl(`/projects/${slug}/page-${i + 1}.webp`)
     );
 
     return (

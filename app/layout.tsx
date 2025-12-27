@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   title: "Jiesen Huang | Portfolio",
   description: "I am a builder of refuges.",
   icons: {
-    icon: "/favicon-2.png",
+    icon: process.env.NEXT_PUBLIC_IMAGE_BASE_URL 
+      ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/portfolio/favicon-2.webp`
+      : "/favicon-2.webp",
   },
 };
 

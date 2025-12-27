@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getImgUrl } from '@/lib/utils';
 import { GradientHeading } from '@/components/ui/gradient-heading';
 import { Brain, ScrollText, UtensilsCrossed, Leaf, LucideIcon, ArrowUpRight, Github } from 'lucide-react';
 
@@ -97,7 +98,7 @@ export default function Work() {
                         className="hidden md:block absolute left-0 lg:left-20 top-1/2 -translate-y-1/2"
                     >
                         <Image
-                            src="/avatar/1.png"
+                            src={getImgUrl("/avatar/1.webp")}
                             alt="Avatar"
                             width={150}
                             height={150}

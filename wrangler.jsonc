@@ -7,5 +7,14 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "vars": {
+    "NEXT_PUBLIC_IMAGE_BASE_URL": "https://img.jiesen-huang.com"
+  },
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "portfolio"
+    }
+  ]
 }

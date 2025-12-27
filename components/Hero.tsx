@@ -6,6 +6,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { TextAnimate } from '@/components/ui/text-animate';
 import { FlipWords } from '@/components/ui/flip-words';
 import Image from 'next/image';
+import { getImgUrl } from '@/lib/utils';
 
 export default function Hero() {
     const manifesto = [
@@ -138,7 +139,7 @@ export default function Hero() {
                         style={{ transform: 'translateX(50%)' }}
                     >
                         <Image
-                            src="/nebula.webp"
+                            src={getImgUrl("/nebula.webp")}
                             alt="Nebula - 3D Rendering"
                             width={1200}
                             height={1200}
@@ -172,7 +173,7 @@ export default function Hero() {
                         className="relative w-full max-w-[300px]"
                     >
                         <Image
-                            src="/nebula.webp"
+                            src={getImgUrl("/nebula.webp")}
                             alt="Nebula - 3D Rendering"
                             width={300}
                             height={300}
